@@ -24,7 +24,7 @@ const userSchema = new Schema({
   profileImage: {
     filename: {
       type: String,
-      default: "uploads/default_profile_image.jpg",
+      default: "default_profile_image.jpg",
     },
     path: {
       type: String,
