@@ -9,7 +9,7 @@ const userRoute = require("./routes/user");
 const chatRoute = require("./routes/chat");
 const path = require("path");
 
-const { newChatOrAddMsg } = require("./controller/chatController");
+const { updateChat } = require("./controller/chat/updateChat");
 const server = require("http").createServer(app);
 const io = require("socket.io")(server, {
   cors: {
@@ -23,7 +23,7 @@ app.use(express.json());
 io.on("connection", (socket) => {
   console.log("user connected");
   socket.on("message", (newMessage) => {
-    newChatOrAddMsg(socket, io, newMessage);
+    updateChat(socket, io, newMessage);
   });
 
   socket.on("disconnect", () => {
